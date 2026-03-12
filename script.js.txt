@@ -1,0 +1,72 @@
+// CONFIG FIREBASE
+const firebaseConfig = {
+apiKey: "SUA_API_KEY",
+authDomain: "SEU_DOMINIO",
+projectId: "SEU_PROJETO",
+storageBucket: "",
+messagingSenderId: "",
+appId: ""
+}
+
+firebase.initializeApp(firebaseConfig)
+
+const db = firebase.firestore()
+
+const grid = document.getElementById("grid")
+
+for(let i=1;i<=300;i++){
+
+let numero=i.toString().padStart(3,"0")
+
+let div=document.createElement("div")
+
+div.className="numero"
+
+div.innerText=numero
+
+// verificar se número já foi vendido
+db.collection("rifa").doc(numero).get().then(doc=>{
+
+if(doc.exists){
+
+div.classList.add("vendido")
+
+}
+
+})
+
+// clique
+div.onclick=function(){
+
+db.collection("rifa").doc(numero).get().then(doc=>{
+
+if(doc.exists){
+
+alert("Número já vendido")
+
+}else{
+
+let nome=prompt("Digite seu nome")
+
+let telefone=prompt("Digite seu telefone")
+
+db.collection("rifa").doc(numero).set({
+
+numero:numero,
+nome:nome,
+telefone:telefone,
+status:"reservado"
+
+})
+
+alert("Número reservado!")
+
+}
+
+})
+
+}
+
+grid.appendChild(div)
+
+}

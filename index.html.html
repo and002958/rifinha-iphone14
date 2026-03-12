@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifa iPhone 14</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#f4f4f4;
+margin:0;
+}
+
+h1{
+color:#111;
+margin-top:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+.iphone-img{
+width:250px;
+margin:20px auto;
+display:block;
+border-radius:15px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:#00a884;
+margin-bottom:20px;
+}
+
+.pixbox{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+margin-bottom:30px;
+}
+
+.pixkey{
+background:#eee;
+padding:10px;
+border-radius:5px;
+font-weight:bold;
+word-break:break-all;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:10px;
+max-width:600px;
+margin:20px auto;
+}
+
+.numero{
+background:white;
+padding:15px;
+border-radius:8px;
+border:1px solid #ccc;
+cursor:pointer;
+font-weight:bold;
+}
+
+.numero:hover{
+background:#4CAF50;
+color:white;
+}
+
+button{
+margin-top:20px;
+padding:15px;
+font-size:18px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#128C7E;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Rifa iPhone 14</h1>
+
+<div class="container">
+
+<img class="iphone-img"
+src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_SL1500_.jpg"
+alt="iPhone 14 Blue">
+
+<h2>📱 iPhone 14 - 128GB</h2>
+
+<div class="price">
+🎟 Valor por número: R$30
+</div>
+
+<div class="pixbox">
+
+<h3>💳 Pagamento via PIX</h3>
+
+<p>Chave PIX (copie e cole):</p>
+
+<div class="pixkey">
+a270b244-47e4-4dec-b10f-6e68b23ff386
+</div>
+
+<p>Após pagar envie o comprovante:</p>
+
+<button onclick="window.open('https://wa.me/5511959244768')">
+Enviar comprovante no WhatsApp
+</button>
+
+</div>
+
+<h3>Escolha seu número</h3>
+
+<div class="grid" id="grid"></div>
+
+</div>
+
+<script>
+
+const grid=document.getElementById("grid")
+const whatsapp="5511959244768"
+
+for(let i=1;i<=300;i++){
+
+let numero=i.toString().padStart(3,"0")
+
+let div=document.createElement("div")
+
+div.className="numero"
+
+div.innerText=numero
+
+div.onclick=function(){
+
+let msg=encodeURIComponent(
+"Olá! Quero comprar o número "+numero+" da rifa do iPhone 14."
+)
+
+window.open(
+"https://wa.me/"+whatsapp+"?text="+msg
+)
+
+}
+
+grid.appendChild(div)
+
+}
+
+</script>
+
+</body>
+</html>
